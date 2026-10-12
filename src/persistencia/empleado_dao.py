@@ -30,7 +30,7 @@ class EmpleadoDAO:
     )
 
     @staticmethod
-    def buscar_por_id(id_empleado):
+    def buscarPorId(id_empleado):
         conexion = abrir_conexion()
         cursor = conexion.cursor()
         marca = marcador_sql()
@@ -72,7 +72,7 @@ class EmpleadoDAO:
         return empleados
 
     @staticmethod
-    def eliminar(empleado):
+    def eliminarEmpleado(empleado):
         conexion = abrir_conexion()
         cursor = conexion.cursor()
         marca = marcador_sql()
@@ -83,3 +83,20 @@ class EmpleadoDAO:
         cursor.execute(sql, (empleado.id,))
         conexion.commit()
         conexion.close()
+
+    @staticmethod
+    def actualizarEmpleado(empleado):
+        conexion = abrir_conexion()
+        cursor = conexion.cursor()
+        marca = marcador_sql()
+
+        sql = f"""
+        UPDATE empleado
+        SET nombre = {marca}, correo = {marca}, departamento = {marca}, direccion = {marca}, telefono = {marca}
+        WHERE id = {marca}
+        """
+
+        cursor.execute(sql, (empleado.nombre, empleado.correo, empleado.departamento, empleado.direccion, empleado.telefono, empleado.id))
+        conexion.commit()
+        conexion.close()
+

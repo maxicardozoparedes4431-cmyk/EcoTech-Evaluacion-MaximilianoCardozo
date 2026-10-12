@@ -1,12 +1,12 @@
 # src/dominio/departamento.py
-from dominio.empleado import Empleado
 
 class Departamento:
     """Clase que representa a un departamento"""
 
-    def __init__(self, nombre:str):
-        self.nombre = nombre,
-        self._empleados: list[Empleado] = []
+    def __init__(self, nombre:str, gerente:str, id:int = None):
+        self.nombre = nombre
+        self.gerente = gerente
+        self.id = id
 
     def mostrarDepartamento(self) -> str:
-        return f"Departamento: {self.nombre}"
+        return f"Departamento: {self.nombre}, Gerente: {self.gerente}, ID: {self.id}"
