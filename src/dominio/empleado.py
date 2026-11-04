@@ -11,4 +11,4 @@ class Empleado:
         self.telefono = telefono
 
     def mostrarDatos(self) -> str:
-        return f" ID: {self.id}, Nombre: {self.nombre}, Correo: {self.correo}, Departamento: {self.departamento}, Direccion: {self.direccion}, Teléfono: {self.telefono}"
+        return f" ID: {self.id}\n Nombre: {self.nombre}\n Correo: {self.correo}\n Departamento: {self.departamento}\n Direccion: {self.direccion}\n Teléfono: {self.telefono}"

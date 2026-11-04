@@ -9,4 +9,4 @@ class Departamento:
         self.id = id
 
     def mostrarDepartamento(self) -> str:
-        return f"Departamento: {self.nombre}, Gerente: {self.gerente}, ID: {self.id}"
+        return f"Departamento: {self.nombre}\n Gerente: {self.gerente}\n ID: {self.id}"

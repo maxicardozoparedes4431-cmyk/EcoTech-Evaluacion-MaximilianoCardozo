@@ -6,4 +6,4 @@ class Proyecto:
         self.id = id
 
     def mostrarProyecto(self) -> str:
-        return f"Nombre: {self.nombre}, Descripción: {self.descripcion}, ID: {self.id}"
+        return f"Nombre: {self.nombre}\n Descripción: {self.descripcion}\n ID: {self.id}"

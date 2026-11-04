@@ -7,4 +7,4 @@ class Registro:
         self.proyecto = proyecto
 
     def mostrarRegistros(self) -> str:
-        return f"Fecha: {self.fecha}, Horas: {self.horas}, Proyecto: {self.proyecto}, ID: {self.id}"
+        return f"Fecha: {self.fecha}\n Horas: {self.horas}\n Proyecto: {self.proyecto}\n ID: {self.id}"

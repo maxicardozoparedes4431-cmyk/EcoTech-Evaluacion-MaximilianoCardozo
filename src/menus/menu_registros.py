@@ -6,4 +6,4 @@ def menu():
     print("2: Buscar Registro")
     print("3: Actualizar Registro")
     print("4: Eliminar Registro")
-    print("5: Salir")
+    print("5: Volver")

@@ -6,4 +6,4 @@ def menu():
     print("2: Buscar Proyecto")
     print("3: Actualizar Proyecto")
     print("4: Eliminar Proyecto")
-    print("5: Salir")
+    print("5: Volver")

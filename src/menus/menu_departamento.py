@@ -6,4 +6,4 @@ def menu():
     print("2: Buscar Departamento")
     print("3: Actualizar Departamento")
     print("4: Eliminar Departamento")
-    print("5: Salir")
+    print("5: Volver")
