@@ -9,10 +9,10 @@ class UsuarioDAO:
         cursor = conexion.cursor()
         marcador = marcador_sql()
         sql = f"""
-        INSERT INTO usuario (nombre, pass_hash, id_empleado)
-        VALUES ({marcador}, {marcador}, {marcador})
+        INSERT INTO usuario (nombre, pass_hash, id_empleado, rol)
+        VALUES ({marcador}, {marcador}, {marcador}, {marcador})
         """
-        cursor.execute(sql, (usuario.nombre_usuario, usuario.password_hash, usuario.empleado_id))
+        cursor.execute(sql, (usuario.nombre_usuario, usuario.password_hash, usuario.empleado_id, usuario.rol))
         usuario.id = cursor.lastrowid
         conexion.commit()
         conexion.close()
@@ -24,7 +24,8 @@ class UsuarioDAO:
             id=fila[0],
             nombre_usuario=fila[1],
             password_hash=fila[2],
-            empleado_id=fila[3]
+            empleado_id=fila[3],
+            rol=fila[4]
         )
 
     @staticmethod
@@ -34,7 +35,7 @@ class UsuarioDAO:
         marca = marcador_sql()
         
         sql =f"""
-        SELECT id, nombre, pass_hash, id_empleado
+        SELECT id, nombre, pass_hash, id_empleado, rol
         FROM usuario WHERE nombre = {marca}
         """
 
@@ -54,7 +55,7 @@ class UsuarioDAO:
         conexion = abrir_conexion()
         cursor = conexion.cursor()
         cursor.execute(
-        "SELECT id, nombre from usuario"
+        "SELECT id, nombre, rol from usuario"
         )
         filas = cursor.fetchall()
         conexion.close()
@@ -90,11 +91,11 @@ class UsuarioDAO:
 
         sql = f"""
         UPDATE usuario
-        SET nombre = {marca}, pass_hash = {marca}, id_empleado = {marca}
+        SET nombre = {marca}, id_empleado = {marca}
         WHERE id = {marca}
         """
 
-        cursor.execute(sql, (usuario.nombre_usuario, usuario.password_hash, usuario.empleado_id, usuario.id))
+        cursor.execute(sql, (usuario.nombre_usuario, usuario.empleado_id, usuario.id))
         conexion.commit()
         conexion.close()
 

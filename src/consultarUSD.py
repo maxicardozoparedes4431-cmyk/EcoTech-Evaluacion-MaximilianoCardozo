@@ -1,5 +1,5 @@
 import requests
-
+from time import sleep
 
 def obtener_datos():
     respuesta = requests.get(
@@ -52,7 +52,9 @@ def consultar_dolar():
         datos = obtener_datos()
         # Extraer y validar la fecha y el valor del primer registro.
         fecha, valor = extraer_tasa(datos)
+        print("Consultando la tasa de cambio...")
         # Mostrar el valor con dos decimales y su unidad.
+        sleep(1)
         print(f"Dólar observado: {valor:.2f} CLP por USD")
         # Mostrar la fecha a la que corresponde el dato.
         print(f"Fecha del registro: {fecha}")

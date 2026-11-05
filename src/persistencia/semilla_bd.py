@@ -75,7 +75,7 @@ def cargar_datos():
     INSERT INTO empleado (nombre, correo, departamento, direccion, telefono)
     SELECT {marcador}, {marcador}, {marcador}, {marcador}, {marcador}
     WHERE NOT EXISTS (
-        SELECT 1
+        SELECT
         FROM empleado
         WHERE correo = {marcador}
     )"""
@@ -84,15 +84,20 @@ def cargar_datos():
         (*empleado, empleado[1])
         for empleado in empleados
     ]
-    cursor.executemany(sql_empleado, parametros_empleados)
+    try:
+        cursor.executemany(sql_empleado, parametros_empleados)
+    except Exception:
+        print(" ")
+
 
     usuarios = [
-        ("admin_sys", "admin123", 1),
+        ("admin_sys", "admin123", 1, "admin"),
+        ("empleado_1", "empleado123", 2, "empleado"),
     ]
 
     sql_usuario = f"""
-    INSERT INTO usuario (nombre, pass_hash, id_empleado)
-    SELECT {marcador}, {marcador}, {marcador}
+    INSERT INTO usuario (nombre, pass_hash, id_empleado, rol)
+    SELECT {marcador}, {marcador}, {marcador}, {marcador}
     WHERE NOT EXISTS (
         SELECT 1
         FROM usuario
@@ -100,8 +105,8 @@ def cargar_datos():
     )"""
 
     parametros_usuarios = [
-        (nombre, crear_hash(clave), empleado_id, nombre)
-        for nombre, clave, empleado_id in usuarios
+        (nombre, crear_hash(clave), empleado_id, rol, nombre)
+        for nombre, clave, empleado_id, rol in usuarios
     ]
     cursor.executemany(sql_usuario, parametros_usuarios)
     conexion.commit()

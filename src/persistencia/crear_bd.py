@@ -14,7 +14,7 @@ def crear_tablas():
         departamento INTEGER NOT NULL,
         direccion TEXT,
         telefono TEXT
-        )
+        );
         '''
 
         sql_departamento = '''
@@ -22,7 +22,7 @@ def crear_tablas():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT,
         id_gerente INTEGER NOT NULL
-        )
+        );
         '''
 
         sql_registro = '''
@@ -32,7 +32,7 @@ def crear_tablas():
         horas INTEGER NOT NULL,
         comentario TEXT,
         proyecto INTEGER NOT NULL
-        )
+        );
         '''
 
         sql_proyecto = '''
@@ -40,7 +40,7 @@ def crear_tablas():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT NOT NULL,
         descripcion TEXT
-        )
+        );
         '''
 
         sql_usuario = '''
@@ -49,7 +49,9 @@ def crear_tablas():
         nombre TEXT NOT NULL,
         pass_hash TEXT NOT NULL,
         id_empleado INTEGER NOT NULL
-        )
+        rol TEXT NOT NULL DEFAULT 'empleado'
+            check (rol IN ('admin', 'empleado'))
+        );
         '''
     else:   
         sql_empleado = '''
@@ -64,7 +66,7 @@ def crear_tablas():
         CONSTRAINT fk_departamento FOREIGN KEY (departamento) REFERENCES departamento(id),
         CONSTRAINT uq_correo UNIQUE (correo),
         CONSTRAINT uq_telefono UNIQUE (telefono)
-        )
+        );
         '''
         
         sql_departamento = '''
@@ -74,7 +76,7 @@ def crear_tablas():
         id_gerente INT NOT NULL,
 
         CONSTRAINT fk_gerente FOREIGN KEY (id_gerente) REFERENCES empleado(id)
-        )
+        );
         '''
 
         sql_registro = '''
@@ -86,7 +88,7 @@ def crear_tablas():
         id_proyecto INT NOT NULL,
 
         CONSTRAINT fk_proyecto FOREIGN KEY (id_proyecto) REFERENCES proyecto(id)
-        )
+        );
         '''
 
         sql_proyecto = '''
@@ -94,7 +96,7 @@ def crear_tablas():
         id INT PRIMARY KEY AUTO_INCREMENT,
         nombre VARCHAR(100) NOT NULL,
         descripcion VARCHAR(255)
-        )
+        );
         '''
 
         sql_usuario = '''
@@ -103,9 +105,11 @@ def crear_tablas():
         nombre VARCHAR(50) NOT NULL,
         pass_hash VARCHAR(255) NOT NULL,
         id_empleado INT NOT NULL,
+        rol VARCHAR(20) NOT NULL DEFAULT 'empleado'
+        check (rol IN ('admin', 'empleado')),
         
         CONSTRAINT fk_empleado FOREIGN KEY (id_empleado) REFERENCES empleado(id),
-        CONSTRAINT uq_nombre UNIQUE (nombre))
+        CONSTRAINT uq_nombre UNIQUE (nombre));
         '''
     cursor.execute(sql_empleado)
     cursor.execute(sql_departamento)

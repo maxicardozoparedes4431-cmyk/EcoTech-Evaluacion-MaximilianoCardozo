@@ -36,11 +36,18 @@ def autenticar(nombre, clave):
     try:
         contrasena_valida = bcrypt.checkpw(
             datos, cuenta.password_hash.encode("utf-8")
+
+        
         )
     except ValueError:
         return None
 
     if not contrasena_valida:
         return None
-    return {"id": cuenta.id, "empleado_id": cuenta.empleado_id,
-    "nombre_usuario": cuenta.nombre_usuario}
+    return Usuario(
+        id=cuenta.id,
+        empleado_id=cuenta.empleado_id,
+        nombre_usuario=cuenta.nombre_usuario,
+        password_hash=cuenta.password_hash,
+        rol=cuenta.rol
+    )

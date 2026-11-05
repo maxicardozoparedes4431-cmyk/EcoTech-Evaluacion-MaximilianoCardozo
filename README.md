@@ -1,5 +1,7 @@
 # EcoTech-Evaluacion-MaximilianoCardozo
 
+# Documentación de uso de la IA
+
 Utilicé la IA para generar datos de prueba dentro de la base de datos con el fin
 de facilitar la prueba de la aplicación. La IA generó 5 departamentos y 20 empleados
 con información ficticia, incluyendo nombres, correos electrónicos, direcciones y números de
@@ -8,7 +10,7 @@ teléfono.
 
 ## Levantar el proyecto en otro equipo
 
-En el nuevo equipo necesitás tener instalados Git y Python 3. Luego, abrí
+En el nuevo equipo necesitás tener instalados Git y Python 3. Luego, abre
 PowerShell y ejecutá:
 
 ```powershell
@@ -20,7 +22,7 @@ python -m pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-Si PowerShell no permite activar el entorno virtual, ejecutá:
+Si PowerShell no permite activar el entorno virtual, ejecuta:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
@@ -63,7 +65,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_NAME=ecotech_local
 DB_USER=root
-DB_PASSWORD=tu_contraseña
+DB_PASSWORD=
 ```
 
 Reemplazá `DB_USER` y `DB_PASSWORD` por las credenciales de tu instalación.

@@ -100,3 +100,20 @@ class EmpleadoDAO:
         conexion.commit()
         conexion.close()
 
+    @staticmethod
+    def actualizarEmpleado_comoEmpleado(empleado):
+        conexion = abrir_conexion()
+        cursor = conexion.cursor()
+        marca = marcador_sql()
+
+        sql = f"""
+        UPDATE empleado
+        SET nombre = {marca}, correo = {marca}, direccion = {marca}, telefono = {marca}
+        WHERE id = {marca}
+        """
+
+        cursor.execute(sql, (empleado.nombre, empleado.correo, empleado.direccion, empleado.telefono, empleado.id))
+        conexion.commit()
+        conexion.close()
+
+

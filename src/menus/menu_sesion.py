@@ -8,10 +8,11 @@ def solicitar_registro():
                 empleado_id = pedir_dato("ID del empleado: ", int)
                 nombre = pedir_dato("Nuevo usuario: ", Usuario.normalizar_usuario)
                 clave = pedir_dato("Contraseña: ", Usuario.validar_clave, getpass)
+                
                 if clave != getpass("Repita la contraseña: "):
                         print("Las contraseñas no coinciden. Vuelva al registro.")
                         return None
-                usuario_id = registrar_usuario(empleado_id, nombre, clave)
+                usuario_id = registrar_usuario(empleado_id, nombre, clave, rol)
         except (TypeError, ValueError) as error:
                 print(error)
                 return None
@@ -24,7 +25,7 @@ def solicitar_login():
 
         try:
                 usuario = autenticar(nombre, clave)
-
+                
         except (TypeError, ValueError) as error:
                 input(f"No se pudo validar el acceso. {error}")
                 return None
