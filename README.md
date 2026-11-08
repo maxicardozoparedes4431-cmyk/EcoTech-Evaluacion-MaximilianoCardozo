@@ -22,8 +22,8 @@ En el nuevo equipo necesitás tener instalados Git y Python 3. Luego, abre
 Git Bash desde la carpeta del proyecto y ejecutá:
 
 ```git bash
-git clone https://github.com/maxicardozoparedes4431-cmyk/EcoTech-Evaluacion-MaximilianoCardozo.git
-cd EcoTech-Evaluacion-MaximilianoCardozo
+git clone https://github.com/maxicardozoparedes4431-cmyk/EcoTech-Evaluacion-MaximilianoCardozo.gitcd
+EcoTech-Evaluacion-MaximilianoCardozo
 python -m venv .venv
 source .venv/Scripts/activate
 python -m pip install -r requirements.txt
@@ -77,8 +77,7 @@ IMPORTANTE CAMBIAR EL PUERTO A 3308
 Reemplazá `DB_USER` y `DB_PASSWORD` por las credenciales de tu instalación.
 Con el entorno virtual activado, iniciá el programa:
 
-```powershell
-$env:PYTHONPATH="src"
+```
 python src\main.py
 ```
 
