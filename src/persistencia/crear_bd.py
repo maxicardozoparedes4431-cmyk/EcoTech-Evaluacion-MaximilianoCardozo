@@ -53,6 +53,16 @@ def crear_tablas():
             check (rol IN ('admin', 'empleado'))
         );
         '''
+
+        sql_indicador = '''
+        CREATE TABLE IF NOT EXISTS indicador_dolar(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fecha TEXT NOT NULL,
+        valor REAL NOT NULL,
+        fuente TEXT NOT NULL
+            check (fuente in ('API', 'Historial'))
+        );
+        '''
     else:   
         sql_empleado = '''
         CREATE TABLE IF NOT EXISTS empleado (
@@ -111,11 +121,24 @@ def crear_tablas():
         CONSTRAINT fk_empleado FOREIGN KEY (id_empleado) REFERENCES empleado(id),
         CONSTRAINT uq_nombre UNIQUE (nombre));
         '''
+
+        sql_indicador = '''
+                CREATE TABLE IF NOT EXISTS indicador(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                fecha VARCHAR(50) NOT NULL,
+                valor FLOAT NOT NULL,
+                fuente VARCHAR(20) NOT NULL
+                    CHECK(fuente IN('API', 'Historial'))
+                );
+        '''
+
     cursor.execute(sql_empleado)
     cursor.execute(sql_departamento)
     cursor.execute(sql_registro)
     cursor.execute(sql_proyecto)
     cursor.execute(sql_usuario)
+    cursor.execute(sql_indicador)
+
 
     if obtener_motor() == "mysql":
         cursor.execute(

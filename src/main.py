@@ -56,6 +56,6 @@ while True:
             menu_empleado(usuario)
             usuario = None
 
-    except AttributeError:
+    except Exception:
         print("Saliendo del programa...")
         break

@@ -1,5 +1,7 @@
 import requests
 from time import sleep
+from dominio.indicador_dolar import Indicador
+from persistencia.indicador_dao import IndicadorDAO
 
 def obtener_datos():
     respuesta = requests.get(
@@ -46,7 +48,7 @@ def extraer_tasa(datos, moneda="CLP"):
     # Devolver la fecha y el valor como una tupla.
     return fecha, valor
 
-def consultar_dolar():
+def consultarDolar():
     try:
         # Consultar la API y obtener los datos.
         datos = obtener_datos()
@@ -58,11 +60,37 @@ def consultar_dolar():
         print(f"Dólar observado: {valor:.2f} CLP por USD")
         # Mostrar la fecha a la que corresponde el dato.
         print(f"Fecha del registro: {fecha}")
+        indicador = Indicador(fecha, valor, "API")
+        # Guardar el indicador en la base de datos.
+        indicador_guardado = IndicadorDAO.registrarIndicador(indicador)
+        print(f"Registro guardado: {indicador_guardado.id}")
+
     except requests.exceptions.RequestException:
         # Controlar fallos de conexión, espera, HTTP o decodificación JSON.
-        print("No pudimos consultar el servicio. Reintente.")
+        print("No pudimos consultar el servicio, Buscando el resultado más reciente...")
+        sleep(1)
+        respaldo = IndicadorDAO.obtener_ultimo()
+        if respaldo is None:
+            print("No hay datos disponibles en la base de datos para guardar en el historial.")
+            return
+
+        print(f"Consulta más reciente:\n{respaldo.valor:.2f} CLP por USD\nFecha del registro: {respaldo.fecha}")
+        respaldo_a_guardar = Indicador(respaldo.fecha, respaldo.valor, "Historial")
+
+        respaldo_guardado = IndicadorDAO.registrarIndicador(respaldo_a_guardar)
+        print(f"Registro guardado en la base de datos: {respaldo_guardado.id}")
+
     except (ValueError, KeyError, TypeError):
         # Controlar valores inválidos, claves ausentes o tipos incorrectos.
         print("La respuesta no contiene un indicador válido.")
 
-
+def mostrarHistorial():
+    historial = IndicadorDAO.listar()
+    if historial is None or len(historial) == 0:
+        print("No hay registros del dólar observado en la base de datos.")
+        return
+    print("Historial del dólar observado:")
+    for indicador in historial:
+        print("-" * 30)
+        print(indicador.mostrarDatos())
+        print("-" * 30)

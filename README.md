@@ -7,6 +7,14 @@ de facilitar la prueba de la aplicación. La IA generó 5 departamentos y 20 emp
 con información ficticia, incluyendo nombres, correos electrónicos, direcciones y números de
 teléfono.
 
+Mi razonamiento para este uso de la IA es para de forma eficiente, porder cargar datos que tengan sentido
+sin tener que estar registrando empleados/adminstradores constantemente
+
+También use la IA como apoyo para la consulta de la API, específicamente en la sección de rescatar el último dato disponible de la base de datos y guardarla como historial.
+
+Decidí mantener los cambios realizados ya que funcionan de manera correcta
+en caso de alguna falla con la API
+
 
 ## Levantar el proyecto en otro equipo
 
@@ -68,6 +76,10 @@ DB_USER=root
 DB_PASSWORD=
 ```
 
+```
+IMPORTANTE CAMBIAR EL PUERTO A 3308
+```
+
 Reemplazá `DB_USER` y `DB_PASSWORD` por las credenciales de tu instalación.
 Con el entorno virtual activado, iniciá el programa:
 
@@ -77,3 +89,7 @@ python src\main.py
 ```
 
 La aplicación crea las tablas y carga los datos de prueba al iniciar.
+
+Si quiere utilizar el menú de admin, Ingrese con el usuario "admin_sys" con "admin123" de contraseña
+
+En cabmio si quiere utilizar el menú de empleado, Ingrese con el usuario "empleado_1" con "empleado123" de contraseña

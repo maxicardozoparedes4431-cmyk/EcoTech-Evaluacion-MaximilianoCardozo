@@ -2,7 +2,8 @@ import subprocess
 
 from time import sleep
 
-from consultarUSD import consultar_dolar
+from consultarUSD import consultarDolar
+from consultarUSD import mostrarHistorial
 
 from dominio.proyecto import Proyecto
 from dominio.registrotiempo import Registro
@@ -469,9 +470,42 @@ def menu_empleado(usuario):
                         sleep(1)
 
             elif opcion == "4":
-                cls()
-                consultar_dolar()
-                input("Presione Enter para continuar...")
+                    while True:
+                        cls()
+                        print("--- API: CONSULTA DEL DÓLAR ----")
+                        print("1: Consultar Dólar Observado")
+                        print("2: Ver el historial de Dólar Observado")
+                        print("3: Volver")
+
+                        opcionAPI = input("Seleccione una opción: ")
+
+                        try:
+                            if opcionAPI.isdigit():
+                                int(opcionAPI)
+                                print(opcionAPI)
+                        except ValueError:
+                            print("Por favor, ingrese un número válido.")
+                            continue
+
+                        if opcionAPI == "1":
+                            cls()
+                            print("Consultando la tasa de cambio del Dólar Observado...")
+                            sleep(1)
+                            consultarDolar()
+                            input("Presione Enter para continuar...")
+
+                        if opcionAPI == "2":
+                            cls()
+                            print("Mostrando el historial de Dólar Observado...")
+                            sleep(1)
+                            mostrarHistorial()
+                            input("Presione Enter para continuar...")
+
+                        if opcionAPI == "3":
+                            break
+
+                        else:
+                            print("Opción inválida. Por favor, seleccione una opción del 1 al 3.")
 
             elif opcion == "5":
                 print("Cerrando Sesión...")
