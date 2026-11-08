@@ -19,7 +19,7 @@ en caso de alguna falla con la API
 ## Levantar el proyecto en otro equipo
 
 En el nuevo equipo necesitás tener instalados Git y Python 3. Luego, abre
-PowerShell y ejecutá:
+Git Bash desde la carpeta del proyecto y ejecutá:
 
 ```git bash
 git clone https://github.com/maxicardozoparedes4431-cmyk/EcoTech-Evaluacion-MaximilianoCardozo.git
