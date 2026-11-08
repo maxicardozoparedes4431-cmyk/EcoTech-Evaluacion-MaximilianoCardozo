@@ -21,20 +21,15 @@ en caso de alguna falla con la API
 En el nuevo equipo necesitás tener instalados Git y Python 3. Luego, abre
 PowerShell y ejecutá:
 
-```powershell
+```git bash
 git clone https://github.com/maxicardozoparedes4431-cmyk/EcoTech-Evaluacion-MaximilianoCardozo.git
 cd EcoTech-Evaluacion-MaximilianoCardozo
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/Scripts/activate
 python -m pip install -r requirements.txt
-Copy-Item .env.example .env
+cp .env.example .env
 ```
 
-Si PowerShell no permite activar el entorno virtual, ejecuta:
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-```
 
 ## Iniciar con SQLite
 
@@ -48,8 +43,7 @@ DB_NAME=ecotech_local.db
 
 Con el entorno virtual activado, iniciá el programa desde la raíz del proyecto:
 
-```powershell
-$env:PYTHONPATH="src"
+```git bash
 python src\main.py
 ```
 
