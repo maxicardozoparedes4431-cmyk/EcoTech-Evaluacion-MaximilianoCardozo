@@ -85,4 +85,8 @@ La aplicación crea las tablas y carga los datos de prueba al iniciar.
 
 Si quiere utilizar el menú de admin, Ingrese con el usuario "admin_sys" con "admin123" de contraseña
 
-En cabmio si quiere utilizar el menú de empleado, Ingrese con el usuario "empleado_1" con "empleado123" de contraseña
+En cambio si quiere utilizar el menú de empleado, Ingrese con el usuario "empleado_1" con "empleado123" de contraseña
+
+```
+Estas cuentas son de prueba
+```
