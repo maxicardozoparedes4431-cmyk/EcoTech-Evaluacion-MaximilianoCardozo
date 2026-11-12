@@ -72,6 +72,7 @@ def menu_empleado(usuario):
     while True: # desastre absoluto
             cls()
             menu_inicio()
+            print(usuario)
             opcion = input("Seleccione una opción: ")
     
             try:

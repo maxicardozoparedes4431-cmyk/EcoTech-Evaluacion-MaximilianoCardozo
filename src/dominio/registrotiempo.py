@@ -1,6 +1,6 @@
 class Registro:
 
-    def __init__(self, fecha:str, horas:str, proyecto,id=None):
+    def __init__(self, fecha:str, horas:str, proyecto:int,id=None):
         self.fecha = fecha
         self.horas = horas
         self.id = id

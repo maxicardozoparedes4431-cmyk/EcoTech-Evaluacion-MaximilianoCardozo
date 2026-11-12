@@ -400,8 +400,10 @@ def menu_administrador(usuario):
                             elif opcionBusqueda == "2":
                                 try:
                                     departamentos = DepartamentoDAO.listar()
+                                    input("Presione Enter para continuar...")
+
                                 except Exception as e:
-                                    print(f"Error al listar departamentos: {e}")
+                                    input(f"Error al listar departamentos: {e}")
                                     break
                                 if departamentos:
                                     print("Lista de departamentos:")
