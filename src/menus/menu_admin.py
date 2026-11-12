@@ -14,6 +14,7 @@ from dominio.empleado import Empleado
 from dominio.departamento import Departamento
 from dominio.proyecto import Proyecto
 from dominio.registrotiempo import Registro
+from menus.menu_sesion import solicitar_registro
 
 def cls():
     subprocess.run("cls", shell=True)
@@ -28,7 +29,8 @@ def menu_inicio():
         print("3: Proyectos")
         print("4: Registros de Tiempos")
         print("5: Consultar USD")
-        print("6: Cerrar Sesión")
+        print("6: Registrar Usuario")
+        print("7: Cerrar Sesión")
 
 def menu_empleado():
 
@@ -99,6 +101,7 @@ def menu_administrador(usuario):
     while True: # desastre absoluto
             cls()
             menu_inicio()
+            print(usuario)
             opcion = input("Seleccione una opción: ")
     
             try:
@@ -865,8 +868,11 @@ def menu_administrador(usuario):
                     while True:
                         cls()
                         print("---- PERFIL ----")
-                        datosPerfil = EmpleadoDAO.buscarPorId(usuario.empleado_id)
-                        print(datosPerfil.mostrarDatos())
+                        try:
+                            datosPerfil = EmpleadoDAO.buscarPorId(usuario.empleado_id)
+                            print(datosPerfil.mostrarDatos())
+                        except Exception as e:
+                            print(e)
                         print("\n1: Actualizar Perfil")
                         print("2: Volver")
 
@@ -926,8 +932,23 @@ def menu_administrador(usuario):
                     else:
                         print("Opción inválida. Por favor, seleccione una opción del 1 al 3.")
                         
-    
-            elif opcion == "6":
+            if opcion == "6":
+                while True:
+                    cls()
+                    print("---- REGISTRO DE USUARIO ----")
+                    proceder = input("Asegurese de que el empleado ya exista primero,\nde lo contrario, agreguelo desde el menú de empleados.\nDesea continuar? (Y/N)")
+
+                    if proceder == "Y":
+                        solicitar_registro()
+                        break
+                    elif proceder == "N":
+                        print("Volver")
+                        break
+                    else:
+                        print("Por favor, ingrése Y o N")
+
+
+            elif opcion == "7":
                 print("Cerrando Sesión...")
                 break
                 

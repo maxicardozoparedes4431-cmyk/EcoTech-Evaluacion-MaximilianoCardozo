@@ -75,7 +75,7 @@ def cargar_datos():
     INSERT INTO empleado (nombre, correo, departamento, direccion, telefono)
     SELECT {marcador}, {marcador}, {marcador}, {marcador}, {marcador}
     WHERE NOT EXISTS (
-        SELECT
+        SELECT 1
         FROM empleado
         WHERE correo = {marcador}
     )"""
@@ -86,8 +86,8 @@ def cargar_datos():
     ]
     try:
         cursor.executemany(sql_empleado, parametros_empleados)
-    except Exception:
-        print(" ")
+    except Exception as e:
+        input(e)
 
 
     usuarios = [

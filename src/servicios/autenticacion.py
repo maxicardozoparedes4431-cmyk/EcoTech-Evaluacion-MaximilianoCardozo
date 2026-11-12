@@ -14,12 +14,12 @@ def crear_hash(clave):
     clave_bytes, bcrypt.gensalt()
     ).decode("utf-8")
 
-def registrar_usuario(empleado_id, nombre, clave):
+def registrar_usuario(empleado_id, nombre, clave, rol):
     nombre = Usuario.normalizar_usuario(nombre)
     if UsuarioDAO.buscar_por_nombre(nombre) is not None:
         raise ValueError("No se pudo crear esa cuenta.")
     hash_guardado = crear_hash(clave)
-    usuario = Usuario(nombre, hash_guardado, empleado_id)
+    usuario = Usuario(nombre, hash_guardado, empleado_id, rol)
     return UsuarioDAO.registrarUsuario(usuario)
 
 def autenticar(nombre, clave):

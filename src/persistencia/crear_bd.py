@@ -48,7 +48,7 @@ def crear_tablas():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT NOT NULL,
         pass_hash TEXT NOT NULL,
-        id_empleado INTEGER NOT NULL
+        id_empleado INTEGER NOT NULL,
         rol TEXT NOT NULL DEFAULT 'empleado'
             check (rol IN ('admin', 'empleado'))
         );
@@ -71,7 +71,7 @@ def crear_tablas():
         correo VARCHAR(150) NOT NULL,
         departamento INT NOT NULL,
         direccion VARCHAR(255),
-        telefono VARCHAR(20),
+        telefono VARCHAR(20)
 
         CONSTRAINT fk_departamento FOREIGN KEY (departamento) REFERENCES departamento(id),
         CONSTRAINT uq_correo UNIQUE (correo),

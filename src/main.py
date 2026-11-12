@@ -4,7 +4,7 @@ from time import sleep
 from menus.menu_admin import menu_administrador
 from menus.menu_empleado import menu_empleado
 
-from menus.menu_sesion import solicitar_registro, solicitar_login
+from menus.menu_sesion import solicitar_login
 
 
 from persistencia.semilla_bd import cargar_datos
@@ -24,8 +24,7 @@ while True:
         cls()
         print("---- INICIO DE SESIÓN ----")
         print("1. Iniciar Sesión")
-        print("2. Registrar Usuario")
-        print ("3. Salir")
+        print("2. Salir")
 
         opcioninicio = input("Seleccione una opcion: ")
 
@@ -41,12 +40,9 @@ while True:
             if usuario is not None:
                 break
         elif opcioninicio == "2":
-            cls()
-            solicitar_registro()
-        elif opcioninicio == "3":
             break
         else:
-            input("Opcion invalida, por favor seleccione una opcion del 1 al 3")
+            input("Opcion invalida, por favor seleccione una opcion del 1 al 2")
 
     try:
         if usuario.rol == "admin":
@@ -54,7 +50,7 @@ while True:
             usuario = None
         else:
             menu_empleado(usuario)
-            usuario = None
+            usuario = None            
 
     except Exception:
         print("Saliendo del programa...")

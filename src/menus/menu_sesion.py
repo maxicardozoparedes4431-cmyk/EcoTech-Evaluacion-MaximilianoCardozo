@@ -12,6 +12,8 @@ def solicitar_registro():
                 if clave != getpass("Repita la contraseña: "):
                         print("Las contraseñas no coinciden. Vuelva al registro.")
                         return None
+                
+                rol = pedir_dato("Rol: ", Usuario.validar_rol)
                 usuario_id = registrar_usuario(empleado_id, nombre, clave, rol)
         except (TypeError, ValueError) as error:
                 print(error)

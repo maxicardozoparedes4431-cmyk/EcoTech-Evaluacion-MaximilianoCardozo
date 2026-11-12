@@ -256,37 +256,9 @@ def menu_empleado(usuario):
                             input("Presione Enter para continuar...")
     
                     elif opcion3 == "4":
-                        while True:
-                            idProyecto = input("Ingrese el ID del proyecto a eliminar: ")
-    
-                            try:
-                                if idProyecto.isdigit():
-                                    int(idProyecto)
-                                    print(idProyecto)
-                                    break
-                            except ValueError:
-                                print("Por favor, ingrese un número válido.")
-                                continue
-    
-                        try:
-                            proyecto = ProyectoDAO.buscarPorId(idProyecto)
-                        except Exception as e:
-                            print(f"Error al buscar el proyecto: {e}")
-                            continue
-    
-                        if proyecto:
-                            try:
-                                ProyectoDAO.eliminarProyecto(proyecto)
-                                print(f"Proyecto con ID {idProyecto} eliminado con éxito.")
-                            except Exception as e:
-                                print(f"Error al eliminar el proyecto: {e}")
-    
-                        input("Presione Enter para continuar...")
-    
-                    elif opcion3 == "5":
                         break
                     else:
-                        print("Opcion invalida, por favor seleccione una opcion del 1 al 5")
+                        print("Opcion invalida, por favor seleccione una opcion del 1 al 4")
                         sleep(1)
                 
             if opcion == "3":
@@ -437,36 +409,9 @@ def menu_empleado(usuario):
                             input("Presione Enter para continuar...")
                         
                     elif opcion4 == "4":
-                        cls()
-                        idRegistro = input("Ingrese el ID del registro a eliminar: ")
-    
-                        try:
-                            if idRegistro.isdigit():
-                                int(idRegistro)
-                                print(idRegistro)
-                        except ValueError:
-                            print("Por favor, ingrese un número válido.")
-                            continue
-    
-                        try:
-                            registro = RegistroDAO.buscarPorId(idRegistro)
-                        except Exception as e:
-                            print(f"Error al buscar el registro: {e}")
-                            continue
-    
-                        if registro:
-                            try:
-                                RegistroDAO.eliminarProyecto(registro)
-                                print(f"Registro con ID {idRegistro} eliminado con éxito.")
-                            except Exception as e:
-                                print(f"Error al eliminar el registro: {e}")
-    
-                        input("Presione Enter para continuar...")
-    
-                    elif opcion4 == "5":
                         break
                     else:
-                        print("Opcion invalida, por favor seleccione una opcion del 1 al 5")
+                        print("Opcion invalida, por favor seleccione una opcion del 1 al 4")
                         sleep(1)
 
             elif opcion == "4":
