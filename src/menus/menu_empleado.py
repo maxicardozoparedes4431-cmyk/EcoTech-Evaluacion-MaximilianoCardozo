@@ -31,16 +31,14 @@ def menu_proyecto():
 
     print("1: Añadir Proyecto")
     print("2: Buscar Proyecto")
-    print("3: Actualizar Proyecto")
-    print("4: Volver")
+    print("3: Volver")
 
 def menu_registros():
     print("---- REGISTROS ----")
 
     print("1: Agregar Registro")
     print("2: Buscar Registro")
-    print("3: Actualizar Registro")
-    print("4: Volver")
+    print("3: Volver")
 
 def menu_empleado(usuario):
 
@@ -220,45 +218,9 @@ def menu_empleado(usuario):
                                 print("Opción inválida. Por favor, seleccione una opción del 1 al 3.")               
                     
                     elif opcion3 == "3":
-                        cls()
-                        idProyecto = input("Ingrese el ID del proyecto a actualizar: ")
-    
-                        try:
-                            if idProyecto.isdigit():
-                                int(idProyecto)
-                                print(idProyecto)
-                        except ValueError:
-                            print("Por favor, ingrese un número válido.")
-                            continue
-    
-                        try:
-                            proyecto = ProyectoDAO.buscarPorId(idProyecto)
-                        except Exception as e:
-                            print(f"Error al buscar el proyecto: {e}")
-                            continue
-    
-                        if proyecto:
-                            print(f"Proyecto encontrado:\n{proyecto.mostrarProyecto()}")
-                            nombre = input("Ingrese el nuevo nombre del proyecto (deje en blanco para no cambiar): ")
-                            descripcion = input("Ingrese la nueva descripcion del proyecto (deje en blanco para no cambiar): ")
-    
-                            if nombre:
-                                proyecto.nombre = nombre
-                            if descripcion:
-                                proyecto.descripcion = descripcion
-    
-                            try:
-                                ProyectoDAO.actualizarProyecto(proyecto)
-                                print(f"Proyecto con ID {idProyecto} actualizado con éxito.")
-                            except Exception as e:
-                                print(f"Error al actualizar el proyecto: {e}")
-                            
-                            input("Presione Enter para continuar...")
-    
-                    elif opcion3 == "4":
                         break
                     else:
-                        print("Opcion invalida, por favor seleccione una opcion del 1 al 4")
+                        print("Opcion invalida, por favor seleccione una opcion del 1 al 3")
                         sleep(1)
                 
             if opcion == "3":
@@ -360,58 +322,9 @@ def menu_empleado(usuario):
                                 print("Opción inválida. Por favor, seleccione una opción del 1 al 3.")
     
                     elif opcion4 == "3":
-                        cls()
-                        while True:
-                            idRegistro = input("Ingrese el ID del registro a actualizar: ")
-    
-                            try:
-                                if idRegistro.isdigit():
-                                    int(idRegistro)
-                                    print(idRegistro)
-                            except ValueError:
-                                print("Por favor, ingrese un número válido.")
-                                continue
-    
-                            try:
-                                registro = RegistroDAO.buscarPorId(idRegistro)
-                                break
-                            except Exception as e:
-                                print(f"Error al buscar el registro: {e}")
-                                continue
-    
-                        if registro:
-                            print(f"Registro encontrado:\n{registro.mostrarRegistros()}")
-                            horas = input("Ingrese las nuevas horas (deje en blanco para no cambiar): ")
-                            fecha = input("Ingrese la nueva fecha (deje en blanco para no cambiar) [Año-Mes-Día]: ")
-                            while True:
-                                proyecto = input("Ingrese el nuevo proyecto (deje en blanco para no cambiar): ")
-                                try:
-                                    if proyecto.isdigit():
-                                        int(proyecto)
-                                        print(proyecto)
-                                        break
-                                except ValueError:
-                                    print("Por favor, ingrese una id válida de un proyecto.")
-                                    continue
-                            if horas:
-                                registro.horas = horas
-                            if fecha:
-                                registro.fecha = fecha
-                            if proyecto:
-                                registro.proyecto = proyecto
-    
-                            try:
-                                RegistroDAO.actualizarProyecto(registro)
-                                print(f"Registro con ID {idRegistro} actualizado con éxito.")
-                            except Exception as e:
-                                print(f"Error al actualizar el registro: {e}")
-                            
-                            input("Presione Enter para continuar...")
-                        
-                    elif opcion4 == "4":
                         break
                     else:
-                        print("Opcion invalida, por favor seleccione una opcion del 1 al 4")
+                        print("Opcion invalida, por favor seleccione una opcion del 1 al 3")
                         sleep(1)
 
             elif opcion == "4":
