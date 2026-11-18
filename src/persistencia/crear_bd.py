@@ -71,7 +71,7 @@ def crear_tablas():
         correo VARCHAR(150) NOT NULL,
         departamento INT NOT NULL,
         direccion VARCHAR(255),
-        telefono VARCHAR(20)
+        telefono VARCHAR(20),
 
         CONSTRAINT fk_departamento FOREIGN KEY (departamento) REFERENCES departamento(id),
         CONSTRAINT uq_correo UNIQUE (correo),

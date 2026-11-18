@@ -5,7 +5,7 @@ from persistencia.indicador_dao import IndicadorDAO
 
 def obtener_datos():
     respuesta = requests.get(
-        "https://open.er-api.com/v6/latest/USD",
+        "https://open.er-api.com/v6/lates33t/USD",
         timeout=(3, 5),
     )
     print("Estado HTTP:", respuesta.status_code)
